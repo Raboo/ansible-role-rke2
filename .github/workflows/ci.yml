@@ -19,7 +19,7 @@ on:
 jobs:
   standalone:
     name: Single node setup
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: ${{ !contains(github.event_name, 'pull_request') }}
       matrix:
@@ -56,7 +56,7 @@ jobs:
 
   cluster:
     name: Cluster setup
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: standalone
     strategy:
       matrix:
@@ -90,12 +90,12 @@ jobs:
 
   ha_cluster:
     name: HA (Keepalived) Cluster setup
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: cluster
     strategy:
       matrix:
         config:
-          - image: "ubuntu2204"
+          - image: "ubuntu2404"
             cgroup_mode: "host"
             volumes: "rw"
     steps:
