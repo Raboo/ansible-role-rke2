@@ -56,7 +56,6 @@ jobs:
 
   cluster:
     name: Cluster setup
-    if: ${{ github.event_name == 'pull_request' || github.event_name == 'schedule' }}
     runs-on: ubuntu-22.04
     needs: standalone
     strategy:
@@ -91,7 +90,6 @@ jobs:
 
   ha_cluster:
     name: HA (Keepalived) Cluster setup
-    if: ${{ github.event_name == 'pull_request' || github.event_name == 'schedule' }}
     runs-on: ubuntu-22.04
     needs: cluster
     strategy:
